@@ -174,9 +174,8 @@
 
 // export default Work;
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import work_1 from "../assets/work-1.png";
 import work_4 from "../assets/work-4.png";
 import work_3 from "../assets/work-3.png";
@@ -186,13 +185,14 @@ import work_2 from "../assets/work-2.png";
 import githubIcon from "../assets/githubIcon.png";
 import githubIconDark from "../assets/githubIconDark.png";
 import figmaIcon from "../assets/figma.png";
+import { motion } from "motion/react";
 
 const projects = [
   {
     id: 1,
     image: work_1,
     title: "Full-Stack Food Delivery Website - Triggu Foods",
-    desc: "A complete food delivery platform built using React, Express.js, and MongoDB. Features include user authentication, real-time order tracking, admin panel.",
+    desc: "A complete food delivery platform...",
     demo: "https://food-manager-frontend.onrender.com/",
     repo: "https://github.com/triggereddown/Restaurant_Manager_app",
   },
@@ -200,15 +200,15 @@ const projects = [
     id: 2,
     image: work_2,
     title: "Online Delivery System - UI/UX Design",
-    desc: "A complete UI/UX design for an online billing system, covering the admin panel, product management, cart page, and checkout workflow.",
-    demo: "https://www.figma.com/design/st2BAHFlWqK8sFVmsPjqsw/ORDER-PANEL-DESIGN?node-id=0-1&p=f&t=Luix8jJNYe9rDfLo-0",
-    repo: "https://www.figma.com/design/st2BAHFlWqK8sFVmsPjqsw/ORDER-PANEL-DESIGN?node-id=0-1&p=f&t=Luix8jJNYe9rDfLo-0",
+    desc: "A complete UI/UX design for an online billing system...",
+    demo: "https://www.figma.com/design/st2BAHFlWqK8sFVmsPjqsw/ORDER-PANEL-DESIGN",
+    repo: "https://www.figma.com/design/st2BAHFlWqK8sFVmsPjqsw/ORDER-PANEL-DESIGN",
   },
   {
     id: 3,
     image: work_3,
     title: "Eat Curious - UI/UX Web Clone",
-    desc: "A pixel-perfect UI/UX clone of the Eat Curious website, built with React. Showcases advanced CSS animations, smooth transitions, and interactive elements for an enhanced user experience.",
+    desc: "A pixel-perfect UI/UX clone...",
     demo: "https://ui-web-clone-eatcurious-xll2.onrender.com/",
     repo: "https://github.com/triggereddown/UI_web_clone_EatCurious",
   },
@@ -216,7 +216,7 @@ const projects = [
     id: 4,
     image: work_4,
     title: "Pokédex - Pokémon Card Generator",
-    desc: "A simple JavaScript project using the Pokémon API to fetch and display Pokémon details. Renders a card in the center of the page showing the Pokémon's image, name, and stats",
+    desc: "A simple JavaScript project using the Pokémon API...",
     demo: "https://triggereddown.github.io/Pokemon_card_API_project/",
     repo: "https://github.com/triggereddown/Pokemon_card_API_project",
   },
@@ -224,7 +224,7 @@ const projects = [
     id: 5,
     image: work_5,
     title: "Tab Manager - Chrome Extension",
-    desc: "A Chrome extension that helps users save and manage their favorite tabs in a beautifully designed UI. Users can save sessions, reopen saved tabs anytime, and organize them efficiently.",
+    desc: "A Chrome extension that helps users save and manage their favorite tabs...",
     demo: "https://github.com/triggereddown/Productive_tab_manager",
     repo: "https://github.com/triggereddown/Productive_tab_manager",
   },
@@ -232,26 +232,25 @@ const projects = [
     id: 6,
     image: work_6,
     title: "Transport Hackathon Mobile App - Figma UI Design",
-    desc: "A modern and visually appealing UI/UX design for a full mobile design , designed in Figma. Includes a landing page,login page,Admin Panel with an interactive layout.",
-    demo: "https://www.figma.com/design/DkmQpeMsihGSNqVFAz8puz/Eka-care-working?node-id=0-1&p=f&t=TzOA5Hztc9QmkS3q-0",
-    repo: "https://www.figma.com/design/DkmQpeMsihGSNqVFAz8puz/Eka-care-working?node-id=0-1&p=f&t=TzOA5Hztc9QmkS3q-0",
+    desc: "A modern and visually appealing UI/UX design...",
+    demo: "https://www.figma.com/design/DkmQpeMsihGSNqVFAz8puz/Eka-care-working",
+    repo: "https://www.figma.com/design/DkmQpeMsihGSNqVFAz8puz/Eka-care-working",
   },
 ];
 
 const Work = ({ isDarkMode }) => {
   return (
     <motion.div
+      id="work"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      viewport={{ once: false, amount: 0.2 }}
-      id="work"
       className="w-full px-[12%] py-10"
     >
       <motion.h4
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: 0.2 }}
+        transition={{ duration: 0.2, delay: 0.3 }}
         className="text-center mb-2 text-lg font-ovo"
       >
         My Arsenal
@@ -264,17 +263,23 @@ const Work = ({ isDarkMode }) => {
       >
         Projects
       </motion.h2>
-      <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo">
+      <motion.p
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.3 }}
+        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo"
+      >
         Here are some of my best works. Click the links to explore!
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, index) => (
-          <motion.div
+      </motion.p>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        {projects.map((project) => (
+          <div
             key={project.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            viewport={{ once: false, amount: 0.1 }}
             className="card p-6 border border-darkHover rounded-md hover:shadow-black cursor-pointer hover:bg-darkHoverLightNew hover:-translate-y-1 duration-300 dark:border dark:border-darkThemeButton hover:dark:bg-darkThemeButton"
           >
             <Image
@@ -303,15 +308,17 @@ const Work = ({ isDarkMode }) => {
                       ? githubIconDark
                       : githubIcon
                   }
-                  alt={project.id === 6 && 2 ? "Figma" : "GitHub"}
+                  alt={
+                    project.id === 6 || project.id === 2 ? "Figma" : "GitHub"
+                  }
                   width={32}
                   height={32}
                 />
               </a>
             </div>
-          </motion.div>
+          </div>
         ))}
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
