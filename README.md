@@ -4,19 +4,6 @@
 
 ---
 
-## 🧭 Table of Contents
-
-- [About the Project](#about-the-project)  
-- [Live Demo](#live-demo)  
-- [Screenshots](#screenshots)  
-- [Tech Stack](#tech-stack)  
-- [Features](#features)  
-- [Getting Started](#getting-started)  
-- [Roadmap](#roadmap)  
-- [Connect with Me](#connect-with-me)  
-
----
-
 ## 🧾 About the Project
 
 This portfolio is built with Next.js for server-side rendering and performance, styled using Tailwind CSS for rapid UI development. It highlights personal projects, skills, and career milestones in a clean and responsive layout.
@@ -25,7 +12,7 @@ This portfolio is built with Next.js for server-side rendering and performance, 
 
 ## 🔗 Live Demo
 
-Check out the live version here: [Your Deployed URL](https://portfolio1-gamma-mauve.vercel.app)
+Check out the live version here: [Let's Go](https://deep-moitra-mauve.vercel.app/)
 
 ---
 
@@ -34,13 +21,16 @@ Check out the live version here: [Your Deployed URL](https://portfolio1-gamma-ma
 *Add some visuals to make it pop!*
 
 - Homepage  
-  <!-- Insert screenshot here -->
+  <img width="1728" height="847" alt="image" src="https://github.com/user-attachments/assets/8b2ed96b-edca-46cb-b750-7249bec675fd" />
+
   
 - Project Section  
-  <!-- Insert screenshot here -->
+  <img width="1680" height="852" alt="image" src="https://github.com/user-attachments/assets/1de3ee5e-027a-4b2e-bfb4-d7d46094fecd" />
+
   
 - About / Contact Page  
-  <!-- Insert screenshot here -->
+  <img width="1622" height="852" alt="image" src="https://github.com/user-attachments/assets/050dede9-a212-4415-9c16-a3b6997a573f" />
+
 
 ---
 
@@ -50,7 +40,6 @@ Check out the live version here: [Your Deployed URL](https://portfolio1-gamma-ma
 |-------------|-------------------------------|
 | Framework   | Next.js                       |
 | Styling     | Tailwind CSS                  |
-| Fonts       | [Example font] or default     |
 | Hosting     | Vercel (recommended)          |
 
 ---
