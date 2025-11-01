@@ -37,6 +37,7 @@ import send_icon from "./send-icon.png";
 import right_arrow_bold from "./right-arrow-bold.png";
 import right_arrow_bold_dark from "./right-arrow-bold-dark.png";
 import work_1 from "./work-1.png";
+import work_7 from "./work-7.png";
 import linkedin from "./linkedin.png";
 import linkedin_dark from "./linkedin_dark.png";
 import github from "./githubIcon.png";
@@ -82,6 +83,7 @@ export const assets = {
   right_arrow_bold,
   right_arrow_bold_dark,
   work_1,
+  work_7,
   linkedin,
   linkedin_dark,
   github,
