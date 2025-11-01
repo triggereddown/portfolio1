@@ -182,6 +182,7 @@ import work_3 from "../assets/work-3.png";
 import work_5 from "../assets/work-5.png";
 import work_6 from "../assets/work-6.png";
 import work_2 from "../assets/work-2.png";
+import work_7 from "../assets/work-7.png";
 import githubIcon from "../assets/githubIcon.png";
 import githubIconDark from "../assets/githubIconDark.png";
 import figmaIcon from "../assets/figma.png";
@@ -190,6 +191,15 @@ import { motion } from "motion/react";
 const projects = [
   {
     id: 1,
+    image: work_7,
+    title:
+      "Full-Stack AI Powered Code Reviewer and Real Time Chat App - AlfredAIChat",
+    desc: "A complete food delivery platform...",
+    demo: "https://aichattrigger.onrender.com/",
+    repo: "https://github.com/triggereddown/AlfredCodeV2",
+  },
+  {
+    id: 2,
     image: work_1,
     title: "Full-Stack Food Delivery Website - Triggu Foods",
     desc: "A complete food delivery platform...",
@@ -197,7 +207,7 @@ const projects = [
     repo: "https://github.com/triggereddown/Restaurant_Manager_app",
   },
   {
-    id: 2,
+    id: 3,
     image: work_2,
     title: "Online Delivery System - UI/UX Design",
     desc: "A complete UI/UX design for an online billing system...",
@@ -205,7 +215,7 @@ const projects = [
     repo: "https://www.figma.com/design/st2BAHFlWqK8sFVmsPjqsw/ORDER-PANEL-DESIGN",
   },
   {
-    id: 3,
+    id: 4,
     image: work_3,
     title: "Eat Curious - UI/UX Web Clone",
     desc: "A pixel-perfect UI/UX clone...",
@@ -213,7 +223,7 @@ const projects = [
     repo: "https://github.com/triggereddown/UI_web_clone_EatCurious",
   },
   {
-    id: 4,
+    id: 5,
     image: work_4,
     title: "Pokédex - Pokémon Card Generator",
     desc: "A simple JavaScript project using the Pokémon API...",
@@ -221,7 +231,7 @@ const projects = [
     repo: "https://github.com/triggereddown/Pokemon_card_API_project",
   },
   {
-    id: 5,
+    id: 6,
     image: work_5,
     title: "Tab Manager - Chrome Extension",
     desc: "A Chrome extension that helps users save and manage their favorite tabs...",
@@ -229,7 +239,7 @@ const projects = [
     repo: "https://github.com/triggereddown/Productive_tab_manager",
   },
   {
-    id: 6,
+    id: 7,
     image: work_6,
     title: "Transport Hackathon Mobile App - Figma UI Design",
     desc: "A modern and visually appealing UI/UX design...",
@@ -302,7 +312,7 @@ const Work = ({ isDarkMode }) => {
               <a href={project.repo} target="_blank" className="py-2">
                 <Image
                   src={
-                    project.id === 6 || project.id === 2
+                    project.id === 3 || project.id === 7
                       ? figmaIcon
                       : isDarkMode
                       ? githubIconDark
