@@ -42,6 +42,8 @@ import linkedin from "./linkedin.png";
 import linkedin_dark from "./linkedin_dark.png";
 import github from "./githubIcon.png";
 import githubIconDark from "./githubIconDark.png";
+import work_8 from "./work-8.png";
+import work_9 from "./work-9.png";
 
 export const assets = {
   user_image,
@@ -84,6 +86,8 @@ export const assets = {
   right_arrow_bold_dark,
   work_1,
   work_7,
+  work_8,
+  work_9,
   linkedin,
   linkedin_dark,
   github,

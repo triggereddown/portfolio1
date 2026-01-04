@@ -183,12 +183,30 @@ import work_5 from "../assets/work-5.png";
 import work_6 from "../assets/work-6.png";
 import work_2 from "../assets/work-2.png";
 import work_7 from "../assets/work-7.png";
+import work_8 from "../assets/work-8.png";
+import work_9 from "../assets/work-9.png";
 import githubIcon from "../assets/githubIcon.png";
 import githubIconDark from "../assets/githubIconDark.png";
 import figmaIcon from "../assets/figma.png";
 import { motion } from "motion/react";
 
 const projects = [
+  {
+    id: 1,
+    image: work_8,
+    title: "GamerThred - Full-Stack game quest completion and rewards platform",
+    desc: "GamerThred is a full-stack platform that enables gamers to complete curated game quests and earn rewards through a structured progression system. The application focuses on seamless quest tracking, user engagement, and scalable backend workflows, providing a smooth experience for both players and administrators.",
+    demo: "https://projectgamerthred.vercel.app/",
+    repo: "--",
+  },
+  {
+    id: 1,
+    image: work_9,
+    title: "HealthHive",
+    desc: "HealthHive is a full-stack health and wellness application with a modern React-based frontend focused on delivering a smooth and responsive user experience. The platform integrates a custom machine learning model served through a FastAPI backend, enabling intelligent data processing and real-time insights. Features like NLP model interaction ,mental health chatbot etc ",
+    demo: "https://health-hive-nine.vercel.app/",
+    repo: "https://github.com/triggereddown/HealthHive",
+  },
   {
     id: 1,
     image: work_7,
