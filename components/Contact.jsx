@@ -35,7 +35,7 @@ const Contact = () => {
       <h4 className="text-center mb-2 text-lg font-ovo">Contact with Me</h4>
       <h2 className="text-center text-5xl font-ovo">Get in Touch</h2>
       <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo">
-        Here are some of my best works. Click the links to explore!
+        Let's connect and explore if you liked my work!
       </p>
       <form onSubmit={onSubmit} className="max-w-2xl mx-auto">
         <div className="grid grid-cols-auto gap-6 mt-10 mb-8  ">
