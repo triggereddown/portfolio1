@@ -219,10 +219,10 @@ const projects = [
   {
     id: 2,
     image: work_1,
-    title: "Full-Stack Food Delivery Website - Triggu Foods",
-    desc: "Triggu Foods is a full-stack food delivery website that enables users to browse restaurants, place orders, and track deliveries seamlessly with an intuitive and responsive interface.",
-    demo: "https://food-manager-frontend.onrender.com/",
-    repo: "https://github.com/triggereddown/Restaurant_Manager_app",
+    title: "Forge UI Store",
+    desc: "Forge UI Store is a full-stack platform for discovering and managing modern UI components and digital assets, featuring a powerful admin panel and a clean, futuristic user interface.",
+    demo: "https://forge-ui-seven.vercel.app/",
+    repo: "https://github.com/triggereddown/UIStore",
   },
   {
     id: 3,
