@@ -173,96 +173,142 @@
 // };
 
 // export default Work;
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
+import { motion } from "motion/react";
+
+// images
 import work_1 from "../assets/work-1.png";
-import work_4 from "../assets/work-4.png";
+import work_2 from "../assets/work-2.png";
 import work_3 from "../assets/work-3.png";
+import work_4 from "../assets/work-4.png";
 import work_5 from "../assets/work-5.png";
 import work_6 from "../assets/work-6.png";
-import work_2 from "../assets/work-2.png";
 import work_7 from "../assets/work-7.png";
 import work_8 from "../assets/work-8.png";
 import work_9 from "../assets/work-9.png";
+import work_11 from "../assets/work-11.png";
+import work_12 from "../assets/work-12.png";
+
 import githubIcon from "../assets/githubIcon.png";
 import githubIconDark from "../assets/githubIconDark.png";
 import figmaIcon from "../assets/figma.png";
-import { motion } from "motion/react";
 
+// 🔥 ICON CONFIG (dynamic)
+const ICONS = {
+  github: {
+    light: githubIcon,
+    dark: githubIconDark,
+    alt: "GitHub",
+  },
+  figma: {
+    light: figmaIcon,
+    dark: figmaIcon,
+    alt: "Figma",
+  },
+};
+
+// 🔥 PROJECTS DATA (new ones at top)
 const projects = [
   {
     id: 1,
-    image: work_8,
-    title: "GamerThred - Full-Stack game quest completion and rewards platform",
-    desc: "GamerThred is a full-stack platform that enables gamers to complete curated game quests and earn rewards through a structured progression system. The application focuses on seamless quest tracking, user engagement, and scalable backend workflows, providing a smooth experience for both players and administrators.",
-    demo: "https://projectgamerthred.vercel.app/",
-    repo: "--",
-  },
-  {
-    id: 1,
-    image: work_9,
-    title: "HealthHive",
-    desc: "HealthHive is a full-stack health and wellness application with a modern React-based frontend focused on delivering a smooth and responsive user experience. The platform integrates a custom machine learning model served through a FastAPI backend, enabling intelligent data processing and real-time insights. Features like NLP model interaction ,mental health chatbot etc ",
-    demo: "https://health-hive-nine.vercel.app/",
-    repo: "https://github.com/triggereddown/HealthHive",
-  },
-  {
-    id: 1,
-    image: work_7,
-    title:
-      "Full-Stack AI Powered Code Reviewer and Real Time Chat App - AlfredAIChat",
-    desc: "AlfredAIChat is a full-stack AI-powered platform that combines intelligent code review and real-time communication in one seamless experience. Built with MERN, it allows developers to share code and receive instant AI-driven feedback on their work. The app integrates a smart chat interface that enables team discussions. ",
-    demo: "https://aichattrigger.onrender.com/",
-    repo: "https://github.com/triggereddown/AlfredCodeV2",
+    image: work_11,
+    title: "Productivity Dashboard",
+    desc: "Neo Brutalist styled productivity dashboard",
+    demo: "https://triggereddown.github.io/BatBoard/",
+    repo: "https://github.com/triggereddown/BatBoard",
+    type: "github",
   },
   {
     id: 2,
-    image: work_1,
-    title: "Forge UI Store",
-    desc: "Forge UI Store is a full-stack platform for discovering and managing modern UI components and digital assets, featuring a powerful admin panel and a clean, futuristic user interface.",
-    demo: "https://forge-ui-seven.vercel.app/",
-    repo: "https://github.com/triggereddown/UIStore",
+    image: work_12,
+    title: "BatMove",
+    desc: "Isometric styled Movie Platform",
+    demo: "https://bat-move.vercel.app/",
+    repo: "https://github.com/triggereddown/BatMove",
+    type: "github",
   },
+
   {
     id: 3,
-    image: work_2,
-    title: "Online Delivery System - UI/UX Design",
-    desc: "A complete UI/UX design for an online billing system",
-    demo: "https://www.figma.com/design/st2BAHFlWqK8sFVmsPjqsw/ORDER-PANEL-DESIGN",
-    repo: "https://www.figma.com/design/st2BAHFlWqK8sFVmsPjqsw/ORDER-PANEL-DESIGN",
+    image: work_8,
+    title: "GamerThred - Full-Stack game quest completion platform",
+    desc: "Gamified quest platform with rewards and scalable backend workflows.",
+    demo: "https://projectgamerthred.vercel.app/",
+    repo: "--",
+    type: "github",
   },
   {
     id: 4,
-    image: work_3,
-    title: "Eat Curious - UI/UX Web Clone",
-    desc: "A pixel-perfect UI/UX clone for a website known as Eat Curious",
-    demo: "https://ui-web-clone-eatcurious-xll2.onrender.com/",
-    repo: "https://github.com/triggereddown/UI_web_clone_EatCurious",
+    image: work_9,
+    title: "HealthHive",
+    desc: "Health + ML app with FastAPI backend and NLP chatbot.",
+    demo: "https://health-hive-nine.vercel.app/",
+    repo: "https://github.com/triggereddown/HealthHive",
+    type: "github",
   },
   {
     id: 5,
-    image: work_4,
-    title: "Pokédex - Pokémon Card Generator",
-    desc: "A simple JavaScript project using the Pokémon API",
-    demo: "https://triggereddown.github.io/Pokemon_card_API_project/",
-    repo: "https://github.com/triggereddown/Pokemon_card_API_project",
+    image: work_7,
+    title: "AlfredAIChat",
+    desc: "AI-powered code reviewer + real-time chat (MERN stack).",
+    demo: "https://aichattrigger.onrender.com/",
+    repo: "https://github.com/triggereddown/AlfredCodeV2",
+    type: "github",
   },
   {
     id: 6,
-    image: work_5,
-    title: "Tab Manager - Chrome Extension",
-    desc: "A Chrome extension that helps users save and manage their favorite tabs and save and use them later",
-    demo: "https://github.com/triggereddown/Productive_tab_manager",
-    repo: "https://github.com/triggereddown/Productive_tab_manager",
+    image: work_1,
+    title: "Forge UI Store",
+    desc: "Full-stack UI component store with admin panel.",
+    demo: "https://forge-ui-seven.vercel.app/",
+    repo: "https://github.com/triggereddown/UIStore",
+    type: "github",
   },
   {
     id: 7,
+    image: work_2,
+    title: "Online Delivery System (UI/UX)",
+    desc: "Complete UI/UX billing system design.",
+    demo: "https://www.figma.com/design/st2BAHFlWqK8sFVmsPjqsw/ORDER-PANEL-DESIGN",
+    repo: "https://www.figma.com/design/st2BAHFlWqK8sFVmsPjqsw/ORDER-PANEL-DESIGN",
+    type: "figma",
+  },
+  {
+    id: 8,
+    image: work_3,
+    title: "Eat Curious Clone",
+    desc: "Pixel-perfect UI clone.",
+    demo: "https://ui-web-clone-eatcurious-xll2.onrender.com/",
+    repo: "https://github.com/triggereddown/UI_web_clone_EatCurious",
+    type: "github",
+  },
+  {
+    id: 9,
+    image: work_4,
+    title: "Pokédex Generator",
+    desc: "JS project using Pokémon API.",
+    demo: "https://triggereddown.github.io/Pokemon_card_API_project/",
+    repo: "https://github.com/triggereddown/Pokemon_card_API_project",
+    type: "github",
+  },
+  {
+    id: 10,
+    image: work_5,
+    title: "Tab Manager Extension",
+    desc: "Chrome extension for saving tabs.",
+    demo: "https://github.com/triggereddown/Productive_tab_manager",
+    repo: "https://github.com/triggereddown/Productive_tab_manager",
+    type: "github",
+  },
+  {
+    id: 11,
     image: work_6,
-    title: "Transport Hackathon Mobile App - Figma UI Design",
-    desc: "A modern and visually appealing UI/UX design for inventory management mobile app created during Smart India Hackathon 2023",
+    title: "Transport Hackathon App (UI/UX)",
+    desc: "Inventory management mobile UI design.",
     demo: "https://www.figma.com/design/DkmQpeMsihGSNqVFAz8puz/Eka-care-working",
     repo: "https://www.figma.com/design/DkmQpeMsihGSNqVFAz8puz/Eka-care-working",
+    type: "figma",
   },
 ];
 
@@ -275,6 +321,7 @@ const Work = ({ isDarkMode }) => {
       transition={{ duration: 1 }}
       className="w-full px-[12%] py-10"
     >
+      {/* Heading */}
       <motion.h4
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -283,6 +330,7 @@ const Work = ({ isDarkMode }) => {
       >
         My Arsenal
       </motion.h4>
+
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -291,61 +339,71 @@ const Work = ({ isDarkMode }) => {
       >
         Projects
       </motion.h2>
+
       <motion.p
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.3 }}
         className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo"
       >
-        Here are some of my best works. Click the links to explore!
+        Here are some of my best works. Click to explore!
       </motion.p>
+
+      {/* Grid */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="card p-6 border border-darkHover rounded-md hover:shadow-black cursor-pointer hover:bg-darkHoverLightNew hover:-translate-y-1 duration-300 dark:border dark:border-darkThemeButton hover:dark:bg-darkThemeButton"
-          >
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={320}
-              height={200}
-              className="rounded-md"
-            />
-            <h3 className="text-3xl font-ovo pt-6">{project.title}</h3>
-            <p className="font-ovo pt-4">{project.desc}</p>
-            <div className="flex justify-between mt-4">
-              <a
-                href={project.demo}
-                target="_blank"
-                className="px-4 py-2 bg-darkHover text-white rounded-lg dark:bg-darkThemeButton hover:dark:bg-black"
-              >
-                Live Demo
-              </a>
-              <a href={project.repo} target="_blank" className="py-2">
-                <Image
-                  src={
-                    project.id === 3 || project.id === 7
-                      ? figmaIcon
-                      : isDarkMode
-                        ? githubIconDark
-                        : githubIcon
-                  }
-                  alt={
-                    project.id === 6 || project.id === 2 ? "Figma" : "GitHub"
-                  }
-                  width={32}
-                  height={32}
-                />
-              </a>
+        {projects.map((project) => {
+          const icon = ICONS[project.type];
+
+          return (
+            <div
+              key={project.id}
+              className="card p-6 border border-darkHover rounded-md hover:shadow-black cursor-pointer hover:bg-darkHoverLightNew hover:-translate-y-1 duration-300 dark:border dark:border-darkThemeButton hover:dark:bg-darkThemeButton"
+            >
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={320}
+                height={200}
+                className="rounded-md"
+              />
+
+              <h3 className="text-2xl font-ovo pt-6">{project.title}</h3>
+              <p className="font-ovo pt-4 text-sm">{project.desc}</p>
+
+              <div className="flex justify-between items-center mt-4">
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-darkHover text-white rounded-lg dark:bg-darkThemeButton hover:dark:bg-black"
+                >
+                  Live Demo
+                </a>
+
+                {project.repo !== "--" && (
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2"
+                  >
+                    <Image
+                      src={isDarkMode ? icon.dark : icon.light}
+                      alt={icon.alt}
+                      width={28}
+                      height={28}
+                    />
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </motion.div>
     </motion.div>
   );
