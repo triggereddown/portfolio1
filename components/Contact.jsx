@@ -45,7 +45,9 @@ const Contact = ({ isDarkMode }) => {
               alt="Mail icon"
               className="w-8"
             />
-            <span className="font-ovo text-xl">Let’s build something useful</span>
+            <span className="font-ovo text-xl">
+              Let’s build something useful
+            </span>
           </div>
 
           <p className="max-w-2xl font-ovo text-base leading-8 text-gray-700 dark:text-gray-200">
