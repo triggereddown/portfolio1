@@ -3,20 +3,20 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "motion/react";
 
-const Services = () => {
+const Services = ({ isDarkMode }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       id="services"
-      className="w-full px-[12%] py-10 bg-darkHoverLightNew dark:bg-blackTheme "
+      className="w-full px-[12%] py-24 bg-white dark:bg-[#050505]"
     >
       <motion.h4
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-ovo"
+        className="text-center mb-4 text-sm font-outfit uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400"
       >
         My Arsenal
       </motion.h4>
@@ -24,42 +24,39 @@ const Services = () => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, delay: 0.3 }}
-        className="text-center text-5xl font-ovo"
+        className="text-center text-5xl md:text-6xl font-playfair font-bold text-black dark:text-white"
       >
-        Services{" "}
+        Services
       </motion.h2>
       <motion.p
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, delay: 0.3 }}
-        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo"
+        className="text-center max-w-2xl mx-auto mt-6 mb-16 font-outfit text-lg text-gray-600 dark:text-gray-400"
       >
-        ever since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially
+        Delivering end-to-end digital solutions. From pixel-perfect front-end execution to strategic UI/UX design, bringing your ideas to life with modern technologies.
       </motion.p>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="grid grid-cols-auto gap-6 my-10  "
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-auto gap-8 my-10"
       >
         {serviceData.map(({ icon, title, description, link }, index) => (
           <div
             key={index}
-            className="border border-darkHover rounded-lg px-8 py-12 hover:shadow-black cursor-pointer bg-white hover:bg-darkHoverLightNew hover:-translate-y-1 duration-300 dark:border dark:bg-blackTheme dark:border-darkThemeButton dark:hover:bg-darkThemeButton "
+            className="group border-b border-gray-200 dark:border-gray-800 px-6 py-12 transition-all duration-500 hover:bg-gray-50 dark:hover:bg-[#111]"
           >
-            <Image src={icon} alt="" className="w-10" />
-            <h3 className="text-lg my-4 text-darkHover dark:text-darkThemeButton hover:dark:text-white">
+            <Image src={icon} alt="" className="w-10 mb-6 grayscale group-hover:grayscale-0 transition-all duration-300" />
+            <h3 className="text-2xl font-playfair font-bold mb-4 text-black dark:text-white">
               {title}
             </h3>
-            <p className="text-sm text-darkHover leading-5 dark:text-white">
+            <p className="text-base font-outfit text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
               {description}
             </p>
-            <a href={link} className="flex items-center gap-2 text-sm mt-5">
-              Read More{" "}
-              <Image src={assets.right_arrow} alt="" className="w-4" />
+            <a href={link} className="inline-flex items-center gap-3 text-sm font-outfit font-semibold uppercase tracking-widest text-black dark:text-white group-hover:gap-5 transition-all">
+              Read More
+              <Image src={isDarkMode ? assets.right_arrow_white : assets.right_arrow} alt="" className="w-4" />
             </a>
           </div>
         ))}

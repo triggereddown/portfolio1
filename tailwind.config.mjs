@@ -8,19 +8,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        ovo: "var(--font-ovo)",
+        playfair: "var(--font-playfair)",
         outfit: "var(--font-outfit)",
       },
       colors: {
-        blackTheme: "#090A0B",
-        lightHover: "#52057B",
-        darkTheme: "#0C1524",
-        darkThemeButton: "#754FE0",
-        darkHover: "#493628",
-        darkHoverLight: "#AB886D",
-        darkHoverLightNew: "#FAF0E5",
-        lightpurple: "#BC6FF1",
-        darkPurple: "#5A0F78",
+        blackTheme: "#050505",
+        lightHover: "#f3f4f6",
+        darkTheme: "#111111",
+        darkThemeButton: "#ffffff",
+        darkHover: "#111111",
+        darkHoverLight: "#333333",
+        darkHoverLightNew: "#fafafa",
+        lightpurple: "#d1d5db",
+        darkPurple: "#4b5563",
       },
       boxShadow: {
         black: "4px 4px 0 #000",

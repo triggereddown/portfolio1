@@ -187,6 +187,7 @@ import work_6 from "../assets/work-6.png";
 import work_7 from "../assets/work-7.png";
 import work_8 from "../assets/work-8.png";
 import work_9 from "../assets/work-9.png";
+import work_10 from "../assets/work-10.png";
 import work_11 from "../assets/work-11.png";
 import work_12 from "../assets/work-12.png";
 
@@ -240,11 +241,11 @@ const projects = [
   },
   {
     id: 4,
-    image: work_9,
-    title: "HealthHive",
-    desc: "Health + ML app with FastAPI backend and NLP chatbot.",
-    demo: "https://health-hive-nine.vercel.app/",
-    repo: "https://github.com/triggereddown/HealthHive",
+    image: work_10,
+    title: "ComeCare",
+    desc: "Community based health and wellness platform.",
+    demo: "https://come-care.vercel.app/",
+    repo: "https://github.com/triggereddown/ComeCare",
     type: "github",
   },
   {
@@ -319,14 +320,18 @@ const Work = ({ isDarkMode }) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="w-full px-[12%] py-10"
+      className="relative w-full px-[12%] py-24 overflow-hidden bg-white dark:bg-[#050505]"
     >
+      {/* Background Decor */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-200/50 dark:bg-white/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gray-300/30 dark:bg-white/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
+
       {/* Heading */}
       <motion.h4
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-ovo"
+        className="text-center mb-4 text-sm font-outfit uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400"
       >
         My Arsenal
       </motion.h4>
@@ -335,7 +340,7 @@ const Work = ({ isDarkMode }) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.3 }}
-        className="text-center text-5xl font-ovo"
+        className="text-center text-5xl md:text-6xl font-playfair font-bold text-black dark:text-white"
       >
         Projects
       </motion.h2>
@@ -344,64 +349,108 @@ const Work = ({ isDarkMode }) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.3 }}
-        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo"
+        className="text-center max-w-2xl mx-auto mt-6 mb-16 font-outfit text-lg text-gray-600 dark:text-gray-400"
       >
-        Here are some of my best works. Click to explore!
+        Here are some of my best works. Click the links to explore!
       </motion.p>
 
-      {/* Grid */}
+      {/* Grid container with perspective for 3D child transforms */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+        style={{ perspective: "1200px" }}
       >
-        {projects.map((project) => {
+        {projects.map((project, index) => {
           const icon = ICONS[project.type];
 
           return (
-            <div
+            <motion.div
               key={project.id}
-              className="card p-6 border border-darkHover rounded-md hover:shadow-black cursor-pointer hover:bg-darkHoverLightNew hover:-translate-y-1 duration-300 dark:border dark:border-darkThemeButton hover:dark:bg-darkThemeButton"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{
+                y: -12,
+                rotateX: 8,
+                rotateY: -5,
+                scale: 1.02,
+                transition: { type: "spring", stiffness: 300, damping: 20 },
+              }}
+              style={{ transformStyle: "preserve-3d" }}
+              className="group relative rounded-none bg-gray-50 dark:bg-[#111] border border-gray-200 dark:border-gray-800 p-6 shadow-xl hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] transition-all duration-500 flex flex-col"
             >
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={320}
-                height={200}
-                className="rounded-md"
-              />
+              {/* Highlight sweep overlay (glass reflection) */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-overlay" />
 
-              <h3 className="text-2xl font-ovo pt-6">{project.title}</h3>
-              <p className="font-ovo pt-4 text-sm">{project.desc}</p>
+              {/* Image Container with 3D Pop */}
+              <motion.div
+                className="relative w-full overflow-hidden mb-8 shadow-md border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#050505]"
+                style={{ transformStyle: "preserve-3d" }}
+                whileHover={{ translateZ: 40 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                {/* Soft shadow overlay inside image container on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-              <div className="flex justify-between items-center mt-4">
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 bg-darkHover text-white rounded-lg dark:bg-darkThemeButton hover:dark:bg-black"
-                >
-                  Live Demo
-                </a>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}
+                  height={250}
+                  className="w-full h-56 object-cover object-top transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out"
+                />
+              </motion.div>
 
-                {project.repo !== "--" && (
+              {/* Content Box with its own 3D offset */}
+              <motion.div
+                className="flex flex-col flex-grow"
+                style={{ transformStyle: "preserve-3d" }}
+                whileHover={{ translateZ: 30 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <h3 className="text-2xl font-bold font-playfair mb-3 text-black dark:text-white transition-all duration-300">
+                  {project.title}
+                </h3>
+                <p className="font-outfit text-sm text-gray-600 dark:text-gray-400 mb-8 leading-relaxed flex-grow">
+                  {project.desc}
+                </p>
+
+                {/* Buttons Row */}
+                <div className="flex justify-between items-center mt-auto border-t border-gray-200 dark:border-gray-800 pt-6">
                   <a
-                    href={project.repo}
+                    href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2"
+                    className="relative px-6 py-3 font-outfit text-sm tracking-widest uppercase font-semibold text-white bg-black dark:bg-white dark:text-black overflow-hidden group/btn shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
                   >
-                    <Image
-                      src={isDarkMode ? icon.dark : icon.light}
-                      alt={icon.alt}
-                      width={28}
-                      height={28}
-                    />
+                    <span className="relative z-10 transition-colors duration-300">
+                      Live Demo
+                    </span>
+                    <div className="absolute inset-0 w-full h-full bg-gray-800 dark:bg-gray-200 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
                   </a>
-                )}
-              </div>
-            </div>
+
+                  {project.repo !== "--" && (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white dark:bg-[#050505] border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all group/icon"
+                    >
+                      <Image
+                        src={isDarkMode ? icon.dark : icon.light}
+                        alt={icon.alt}
+                        width={20}
+                        height={20}
+                        className="group-hover/icon:scale-110 transition-all duration-300"
+                      />
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            </motion.div>
           );
         })}
       </motion.div>

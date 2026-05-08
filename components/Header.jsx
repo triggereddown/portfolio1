@@ -104,7 +104,7 @@ import { motion } from "motion/react";
 
 const Header = ({ isDarkMode }) => {
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden bg-white dark:bg-[#050505]">
       {/* ===== Background Video ===== */}
       <video
         autoPlay
@@ -112,121 +112,113 @@ const Header = ({ isDarkMode }) => {
         loop
         playsInline
         preload="auto"
-        className={`absolute top-0 left-0 w-full object-cover z-0
+        className={`absolute top-0 left-0 w-full object-cover z-0 opacity-80 dark:opacity-40
           ${isDarkMode ? "h-full" : "h-[100vh] pt-20"}
         `}
       >
         <source src="/videos/video1.mp4" type="video/mp4" />
       </video>
 
-      {/* ===== Dark Overlay ===== */}
-      <div className="absolute inset-0 bg-black/60 z-10"></div>
+      {/* ===== Gradient Overlay for elegant fade ===== */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white dark:to-[#050505] z-10"></div>
 
       {/* ===== Content ===== */}
-      <div className="relative z-20 flex flex-col items-center justify-center mx-auto h-screen max-w-3xl w-11/12">
+      <div className="relative z-20 flex flex-col items-center justify-center mx-auto h-screen max-w-5xl w-11/12">
         {/* Profile Image */}
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} // smooth ease out
+          className="relative"
         >
+          <div className="absolute inset-0 bg-black/5 dark:bg-white/5 rounded-full blur-xl scale-110"></div>
           <Image
             src={assets.profile_img}
             alt="Deep's Profile"
-            className="rounded-full w-32 mt-16"
+            className="rounded-full w-32 md:w-40 mt-16 shadow-2xl relative z-10 border-4 border-white dark:border-[#111]"
             priority
           />
         </motion.div>
 
         {/* Greeting */}
         <motion.h3
-          initial={{ y: -20, opacity: 0 }}
+          initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className={`flex items-center gap-2 text-xl md:text-2xl mb-3 font-ovo py-4
-            ${isDarkMode ? "text-white" : "text-white"}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className={`flex items-center gap-2 text-sm md:text-base mb-6 font-outfit uppercase tracking-[0.2em] py-4
+            ${isDarkMode ? "text-gray-400" : "text-gray-500"}
           `}
         >
           Hi there, I am
           <span
-            className={`px-2 ${
-              isDarkMode
-                ? "text-darkThemeButton"
-                : "text-yellow-900 font-semibold"
+            className={`font-semibold tracking-[0.1em] ${
+              isDarkMode ? "text-white" : "text-black"
             }`}
           >
             Deep Moitra
           </span>
-          <Image src={assets.hand_icon} alt="hand icon" className="w-6" />
         </motion.h3>
 
         {/* Main Heading */}
         <motion.h1
-          initial={{ y: -30, opacity: 0 }}
+          initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className={`text-3xl sm:text-6xl lg:text-[66px] font-ovo mx-auto max-w-6xl text-center
-            ${isDarkMode ? "text-white" : "text-white"}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className={`text-5xl sm:text-7xl lg:text-[90px] font-playfair font-bold mx-auto max-w-6xl text-center leading-[1.1] tracking-tight
+            ${isDarkMode ? "text-white" : "text-black"}
           `}
         >
-          <span
-            className={isDarkMode ? "text-darkThemeButton" : "text-yellow-900"}
-          >
-            Frontend Developer
-          </span>{" "}
-          and{" "}
-          <span
-            className={isDarkMode ? "text-darkThemeButton" : "text-yellow-900"}
-          >
-            UI/UX
-          </span>{" "}
-          designer based in India
+          <span className="italic font-light">Frontend</span> Developer
+          <br />
+          <span className="text-gray-400 dark:text-gray-600 font-medium">&</span> UI/UX Designer
         </motion.h1>
 
         {/* Description */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className={`max-w-2xl mx-auto font-ovo py-3 text-center
-            ${isDarkMode ? "text-gray-200" : "text-white"}
+          transition={{ duration: 1, delay: 0.5 }}
+          className={`max-w-2xl mx-auto font-outfit py-8 text-center text-lg leading-relaxed
+            ${isDarkMode ? "text-gray-400" : "text-gray-600"}
           `}
         >
-          Constantly evolving and on a mission to craft experiences that are
-          visually appealing and user-friendly.
+          Constantly evolving and on a mission to craft experiences that are visually stunning and effortlessly functional. Based in India.
         </motion.p>
 
         {/* Buttons */}
-        <div className="flex flex-col sm:flex-row items-center mt-6 gap-4">
+        <div className="flex flex-col sm:flex-row items-center mt-4 gap-6">
           {/* Contact Button */}
           <motion.a
             href="#contact"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            className={`relative font-ovo px-10 py-3 rounded-md font-semibold
-              flex items-center gap-2
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className={`font-outfit px-10 py-4 rounded-full font-medium tracking-wide flex items-center gap-3 transition-all
               ${
                 isDarkMode
-                  ? "bg-darkThemeButton text-white hover:bg-blackTheme border border-transparent hover:border-darkThemeButton shadow-none hover:shadow-[0_0_12px_rgba(117,79,224,1)]"
-                  : "bg-darkHover text-white hover:bg-darkHover"
+                  ? "bg-white text-black hover:bg-gray-200"
+                  : "bg-black text-white hover:bg-gray-900"
               }
             `}
           >
             Contact Me
-            <Image src={assets.right_arrow_white} alt="" className="w-4" />
+            <Image 
+              src={isDarkMode ? assets.right_arrow : assets.right_arrow_white} 
+              alt="" 
+              className="w-4 transition-transform group-hover:translate-x-1" 
+            />
           </motion.a>
 
           {/* Resume Button */}
           <motion.a
             href="/Deep Moitra Resume.pdf"
             download
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            className={`px-10 py-3 border rounded-md flex items-center gap-2 font-ovo
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className={`px-10 py-4 rounded-full flex items-center gap-3 font-outfit font-medium tracking-wide transition-all border
               ${
                 isDarkMode
-                  ? "text-white border-darkThemeButton hover:bg-darkThemeButton shadow-[0_0_25px_rgba(117,79,224,1)] hover:shadow-[0_0_40px_rgba(117,79,224,1)]"
-                  : "text-white font-medium hover:text-darkHover hover:border-darkHover border-white hover:bg-darkHoverLightNew"
+                  ? "text-white border-white/30 hover:bg-white/10"
+                  : "text-black border-black/20 hover:bg-black/5"
               }
             `}
           >
