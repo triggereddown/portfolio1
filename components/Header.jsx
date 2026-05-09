@@ -99,7 +99,7 @@
 
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 
 const BirdSVG = ({ className }) => (
@@ -114,6 +114,8 @@ const BirdSVG = ({ className }) => (
 );
 
 const Header = ({ isDarkMode }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden transition-colors duration-500 bg-gradient-to-b from-[#2A5298] via-[#162E61] to-[#0A1429] dark:from-[#0D1B2A] dark:via-[#08101A] dark:to-[#03060A] text-white">
       
@@ -184,23 +186,81 @@ const Header = ({ isDarkMode }) => {
           <motion.div 
              initial={{ opacity: 0, rotate: -20, scale: 0.5 }}
              animate={{ opacity: 1, rotate: 12, scale: 1 }}
+             whileHover={{ 
+               scale: 1.1, 
+               rotate: 0,
+               y: -15,
+             }}
+             onHoverStart={() => setIsHovered(true)}
+             onHoverEnd={() => setIsHovered(false)}
              transition={{ duration: 1.2, delay: 0.8, type: "spring", stiffness: 100, damping: 15 }}
-             className="absolute -right-2 sm:right-0 md:right-12 bottom-0 sm:-bottom-16 md:-bottom-24 w-32 sm:w-48 md:w-56 pointer-events-none z-30"
+             className="absolute -right-2 sm:right-0 md:right-12 -bottom-12 sm:-bottom-16 md:-bottom-24 w-20 sm:w-48 md:w-56 z-30 cursor-pointer"
           >
-            <div className="bg-[#fcfcfc] dark:bg-[#1A1A1A] p-2 sm:p-3 rounded-sm shadow-2xl transition-colors duration-500">
-              <div className="border border-gray-300 dark:border-gray-700 h-full w-full p-2 sm:p-4 text-black dark:text-white font-outfit flex flex-col items-center transition-colors duration-500">
-                {/* Simulated Doodle */}
-                <div className="w-14 h-14 sm:w-24 sm:h-24 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-full mb-2 flex items-center justify-center text-gray-400 dark:text-gray-500 transition-colors duration-500">
-                  <span className="text-xl sm:text-4xl">💻</span>
+            <div className={`p-1.5 sm:p-3 rounded-sm shadow-2xl transition-all duration-500 relative overflow-hidden ${isHovered ? 'bg-[#050B14] shadow-[0_0_30px_rgba(0,255,255,0.6)]' : 'bg-[#f4f4f5] dark:bg-[#1A1A1A]'}`}>
+              
+              {/* Jarvis Animation Overlay */}
+              {isHovered && (
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                  <motion.div 
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    className="absolute w-24 h-24 sm:w-36 sm:h-36 rounded-full border-2 border-transparent border-t-cyan-400 border-b-cyan-400 opacity-70"
+                  />
+                  <motion.div 
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                    className="absolute w-20 h-20 sm:w-32 sm:h-32 rounded-full border-[1px] border-dashed border-cyan-300 opacity-50"
+                  />
+                  <motion.div 
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-cyan-500/20 blur-md"
+                  />
+                  {/* Scanline */}
+                  <motion.div
+                    animate={{ y: ['-100%', '100%'] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-0 left-0 w-full h-1 bg-cyan-400/50 shadow-[0_0_10px_rgba(0,255,255,1)]"
+                  />
+                  <div className="text-cyan-400 font-mono text-[6px] sm:text-[10px] absolute bottom-1 left-1 sm:bottom-2 sm:left-2 flex flex-col gap-0.5 sm:gap-1 opacity-80">
+                    <span>SYS.ON</span>
+                    <span>{'{'}AUTH: OK{'}'}</span>
+                  </div>
                 </div>
-                <p className="font-bold text-[9px] sm:text-xs tracking-wider uppercase mb-1">Deep Moitra</p>
-                <div className="w-10 h-[1px] bg-gray-300 dark:bg-gray-600 my-1 transition-colors duration-500"></div>
-                <p className="text-gray-500 dark:text-gray-400 text-[7px] sm:text-[10px] text-center leading-tight transition-colors duration-500">
-                  EAT • SLEEP • CODE
-                  <br />REPEAT
+              )}
+
+              <div className={`border h-full w-full p-1.5 sm:p-4 font-outfit flex flex-col items-center transition-colors duration-500 relative z-20 ${isHovered ? 'border-cyan-500/50 text-cyan-50' : 'border-gray-300 dark:border-gray-700 text-black dark:text-white'}`}>
+                {/* Simulated Doodle */}
+                <div className={`w-8 h-8 sm:w-24 sm:h-24 border-2 rounded-full mb-1 sm:mb-2 flex items-center justify-center transition-all duration-500 bg-transparent overflow-hidden ${isHovered ? 'border-cyan-400 shadow-[0_0_15px_rgba(0,255,255,0.5)] text-cyan-300' : 'border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400'}`}>
+                  <div className={`transition-all duration-500 w-4 h-4 sm:w-12 sm:h-12 flex items-center justify-center ${isHovered ? 'scale-110 drop-shadow-[0_0_10px_rgba(0,255,255,0.8)]' : ''}`}>
+                    {isHovered ? (
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+                        <path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zm-2 10H6V7h12v12zm-9-6c-.83 0-1.5-.67-1.5-1.5S8.17 10 9 10s1.5.67 1.5 1.5S9.83 13 9 13zm7.5-1.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zM8 15h8v2H8v-2z"/>
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+                        <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2H0c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2h-4zM4 5h16v11H4V5zm8 14c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                      </svg>
+                    )}
+                  </div>
+                </div>
+                <p className={`font-bold text-[6px] sm:text-xs tracking-wider uppercase mb-0.5 sm:mb-1 transition-colors ${isHovered ? 'text-cyan-300' : ''}`}>Deep Moitra</p>
+                <div className={`w-6 sm:w-10 h-[1px] my-0.5 sm:my-1 transition-colors duration-500 ${isHovered ? 'bg-cyan-500' : 'bg-gray-300 dark:bg-gray-600'}`}></div>
+                <p className={`text-[5px] sm:text-[10px] text-center leading-tight transition-colors duration-500 ${isHovered ? 'text-cyan-200' : 'text-gray-500 dark:text-gray-400'}`}>
+                  {isHovered ? (
+                    <>
+                      SYSTEM • ONLINE
+                      <br />READY
+                    </>
+                  ) : (
+                    <>
+                      EAT • SLEEP • CODE
+                      <br />REPEAT
+                    </>
+                  )}
                 </p>
                 {/* Tape detail */}
-                <div className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 w-6 sm:w-8 h-2 sm:h-3 bg-white/60 dark:bg-white/10 backdrop-blur-sm -rotate-12 shadow-sm border border-black/5 dark:border-white/5 transition-colors duration-500"></div>
+                <div className={`absolute -top-1.5 -left-1.5 sm:-top-3 sm:-left-3 w-4 sm:w-8 h-1.5 sm:h-3 -rotate-12 shadow-sm border transition-colors duration-500 z-30 ${isHovered ? 'bg-cyan-500/20 border-cyan-400/30' : 'bg-white/60 dark:bg-white/10 backdrop-blur-sm border-black/5 dark:border-white/5'}`}></div>
               </div>
             </div>
           </motion.div>
