@@ -383,11 +383,9 @@ const Work = ({ isDarkMode }) => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{
-                y: -12,
-                rotateX: 8,
-                rotateY: -5,
+                y: -10,
                 scale: 1.02,
-                transition: { type: "spring", stiffness: 300, damping: 20 },
+                transition: { duration: 0.3, ease: "easeOut" },
               }}
               style={{ transformStyle: "preserve-3d" }}
               className="group relative rounded-none bg-gray-50 dark:bg-[#111] border border-gray-200 dark:border-gray-800 p-6 shadow-xl hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] transition-all duration-500 flex flex-col"
@@ -399,8 +397,8 @@ const Work = ({ isDarkMode }) => {
               <motion.div
                 className="relative w-full overflow-hidden mb-8 shadow-md border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#050505]"
                 style={{ transformStyle: "preserve-3d" }}
-                whileHover={{ translateZ: 40 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                whileHover={{ translateZ: 20 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 {/* Soft shadow overlay inside image container on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -418,8 +416,7 @@ const Work = ({ isDarkMode }) => {
               <motion.div
                 className="flex flex-col flex-grow"
                 style={{ transformStyle: "preserve-3d" }}
-                whileHover={{ translateZ: 30 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <h3 className="text-2xl font-bold font-playfair mb-3 text-black dark:text-white transition-all duration-300">
                   {project.title}
