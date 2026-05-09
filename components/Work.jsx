@@ -190,6 +190,7 @@ import work_9 from "../assets/work-9.png";
 import work_10 from "../assets/work-10.png";
 import work_11 from "../assets/work-11.png";
 import work_12 from "../assets/work-12.png";
+import work_13 from "../assets/work-13.png";
 
 import githubIcon from "../assets/githubIcon.png";
 import githubIconDark from "../assets/githubIconDark.png";
@@ -229,9 +230,18 @@ const projects = [
     repo: "https://github.com/triggereddown/BatMove",
     type: "github",
   },
+    {
+    id: 3,
+    image: work_13,
+    title: "BatMove",
+    desc: "Isometric styled Movie Platform",
+    demo: "https://challenge1-topaz.vercel.app/",
+    repo: "https://github.com/triggereddown/Cohort/tree/main/Challenge1",
+    type: "github",
+  },
 
   {
-    id: 3,
+    id: 4,
     image: work_8,
     title: "GamerThred - Full-Stack game quest completion platform",
     desc: "Gamified quest platform with rewards and scalable backend workflows.",
@@ -240,7 +250,7 @@ const projects = [
     type: "github",
   },
   {
-    id: 4,
+    id: 5,
     image: work_10,
     title: "ComeCare",
     desc: "Community based health and wellness platform.",
@@ -249,7 +259,7 @@ const projects = [
     type: "github",
   },
   {
-    id: 5,
+    id: 6,
     image: work_7,
     title: "AlfredAIChat",
     desc: "AI-powered code reviewer + real-time chat (MERN stack).",
@@ -258,7 +268,7 @@ const projects = [
     type: "github",
   },
   {
-    id: 6,
+    id: 7,
     image: work_1,
     title: "Forge UI Store",
     desc: "Full-stack UI component store with admin panel.",
@@ -267,7 +277,7 @@ const projects = [
     type: "github",
   },
   {
-    id: 7,
+    id: 8,
     image: work_2,
     title: "Online Delivery System (UI/UX)",
     desc: "Complete UI/UX billing system design.",
@@ -276,7 +286,7 @@ const projects = [
     type: "figma",
   },
   {
-    id: 8,
+    id: 9,
     image: work_3,
     title: "Eat Curious Clone",
     desc: "Pixel-perfect UI clone.",
@@ -285,7 +295,7 @@ const projects = [
     type: "github",
   },
   {
-    id: 9,
+    id: 10,
     image: work_4,
     title: "Pokédex Generator",
     desc: "JS project using Pokémon API.",
@@ -294,7 +304,7 @@ const projects = [
     type: "github",
   },
   {
-    id: 10,
+    id: 11,
     image: work_5,
     title: "Tab Manager Extension",
     desc: "Chrome extension for saving tabs.",
@@ -303,7 +313,7 @@ const projects = [
     type: "github",
   },
   {
-    id: 11,
+    id: 12,
     image: work_6,
     title: "Transport Hackathon App (UI/UX)",
     desc: "Inventory management mobile UI design.",

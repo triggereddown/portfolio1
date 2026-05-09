@@ -47,6 +47,7 @@ import work_9 from "./work-9.png";
 import work_10 from "./work-10.png";
 import work_11 from "./work-11.png";
 import work_12 from "./work-12.png";
+import work_13 from "./work-13.png";
 
 export const assets = {
   user_image,
@@ -94,6 +95,7 @@ export const assets = {
   work_10,
   work_11,
   work_12,
+  work_13,
   linkedin,
   linkedin_dark,
   github,
