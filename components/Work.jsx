@@ -233,8 +233,8 @@ const projects = [
     {
     id: 3,
     image: work_13,
-    title: "BatMove",
-    desc: "Isometric styled Movie Platform",
+    title: "DreamzUI",
+    desc: "Neumorphism Styled UI",
     demo: "https://challenge1-topaz.vercel.app/",
     repo: "https://github.com/triggereddown/Cohort/tree/main/Challenge1",
     type: "github",
