@@ -254,7 +254,7 @@ const projects = [
     image: work_10,
     title: "ComeCare",
     desc: "Community based health and wellness platform.",
-    demo: "https://come-care.vercel.app/",
+    demo: "https://com-care.vercel.app/",
     repo: "https://github.com/triggereddown/ComeCare",
     type: "github",
   },
